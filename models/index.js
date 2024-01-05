@@ -1,5 +1,5 @@
 const User = require('./User');
-const Job = require('./Job');
+const Job = require('./JobApplication');
 const Application = require('./Application');
 const Interview = require('./Interview');
 
