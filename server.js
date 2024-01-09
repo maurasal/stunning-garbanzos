@@ -1,5 +1,6 @@
 //Dependencies
 const express = require('express');
+const session = require('express-session')
 const exphbs = require('express-handlebars');
 const path = require('path');
 const hbs = exphbs.create({});
@@ -28,6 +29,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.listen(PORT, () => {
-    console.log(`App is listening on port ${PORT}`)
-});
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`App is listening on port ${PORT}`))
+})
