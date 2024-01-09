@@ -10,27 +10,30 @@ const routes = require('./Controllers');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// const sess = {
-//     secret: 'Super secret secret',
-//     cookie: {},
-//     resave: false,
-//     saveUninitialized: true,
-//     store: new SequelizeStore({
-//       db: sequelize
-//     })
-// };
+const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-// app.use(session(sess));
+const sess = {
+    secret: 'Super secret secret',
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+      db: sequelize
+    })
+};
+
+app.use(session(sess));
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(require('./Controllers/users'));
+app.use(require('./Controllers/api/users'));
 app.use(routes);
 
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`App is listening on port ${PORT}`))
