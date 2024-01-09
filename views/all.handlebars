@@ -1,0 +1,15 @@
+<div>
+  <h2>Submitted Job Applications</h2>
+  <ul>
+    {{#each jobApplications}}
+      <li>
+        <h3>{{position}}</h3>
+        <p>{{company}} - {{location}}</p>
+        <p>Decription - {{description}}</p>
+        <p>Salary: {{salary}}</p>
+        <p>Status: {{status}}</p>
+        <!-- Additional details as needed -->
+      </li>
+    {{/each}}
+  </ul>
+</div>

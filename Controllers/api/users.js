@@ -1,10 +1,10 @@
 const express = require('express');
-const { User } = require('../models');
+const { User } = require('../../models');
 
 const router = express.Router();
 
 // GET all users
-router.get('/users', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const userData = await User.findAll();
     res.status(200).json(userData);
@@ -14,7 +14,7 @@ router.get('/users', async (req, res) => {
 });
 
 // GET a single user by ID
-router.get('/users/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const user = await User.findByPk(req.params.id);
     if (!user) {
@@ -28,7 +28,7 @@ router.get('/users/:id', async (req, res) => {
 });
 
 // POST a new user
-router.post('/users', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const newUser = await User.create(req.body);
     res.status(201).json(newUser);
@@ -38,7 +38,7 @@ router.post('/users', async (req, res) => {
 });
 
 // DELETE a user by ID
-router.delete('/users/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const user = await User.destroy({
       where: {
