@@ -34,4 +34,6 @@ MIT Lisence
 
 ## Install
 Clone the repository by running `git clone https://github.com/josephspur
-/stunning-garbanzos.git` in your terminal.
+/stunning-garbanzos.git` in your terminal.  
+
+Then `npm install` to install all the npm packages that are needed for this application  
