@@ -1,43 +1,39 @@
-# stunning-garbanzos
+# Stunning-Garbonzos
 
-# Application Tracker
+## Table Of Contents
+- [Description](#description)
+- [Usage](#usage)
+- [Contributers](#contributers)
+- [Features](#feature-apis-and-npms)
+- [License](#license)
+- [Install](#install)
 
-This project is a simple application tracker, developed in Java using Spring Boot. It allows users
-to add and remove applications from their list of tracked apps, as well as view the details
-of each app. The main features include:
+## Description
+This application is a job application tracker. It will keep track of which jobs the user has applied to and keep track of the status of each application. The app keeps track of each application by storing into local storage and displaying it whenever the user returns to the site. 
 
-1. User authentication with JWT tokens for secure access control.
-2. A RESTful API that provides endpoints to manage user accounts, add/remove applications,
-   and retrieve information about an individual's applications.
-3. Use Handlebars.js as the template engine.
-4. Implement pagination on the home page.
-5. Include unit tests for all components of the application.
-6. Have both GET and POST routes for retrieving and adding new data.
+## Usage
+To use this application, you need to login (create an account if needed) to use this app. You will have to manually add each job you have applied for by filling out a form with the respective information. Then on each card will be a drop down menu to update the status of each job application.
 
-## Table of Contents
+## Feature APIs and NPMs
+<a href="https://www.npmjs.com/package/dotenv">dotenv</a>  
+<a href="https://www.npmjs.com/package/express">express</a>  
+<a href="https://www.npmjs.com/package/express-handlebars">express-handlebars</a>  
+<a href="https://www.npmjs.com/package/handlebars">handlebars</a>  
+<a href="https://www.npmjs.com/package/mysql2">mysql2</a>  
+<a href="https://www.npmjs.com/package/sequelize">sequelize</a>  
 
-1. [Getting Started](#getting-started)
+## Contributers 
+<a href="https://github.com/madihakhan-hub">Madiha</a>  
+<a href="https://github.com/bcot-code">Barbara</a>  
+<a href="https://github.com/maurasal">Maura</a>  
+<a href="https://github.com/Deboh12">Deborah</a>  
+<a href="https://github.com/laude-noctis">Lizzie</a>  
 
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Running the Server Locally](#running-the-server-locally)
+## License
+MIT Lisence
 
-7. [Usage](#usage)
-8. [Testing](#testing)
-9. [Built With](#built-with)
-10. [License](#license)
-
-## Getting Started <a name="getting-started"></a>
-
-### Prerequisites <a name="prerequisites"></a>
-
-To run this project locally you will need to have installed:
-
-- Java 8 or higher
-- Maven
-- Git
-
-### Installation <a name="installation"></a>
-
+## Install
 Clone the repository by running `git clone https://github.com/josephspur
-/stunning-garbanzos.git` in your terminal.
+/stunning-garbanzos.git` in your terminal.  
+
+Then `npm install` to install all the npm packages that are needed for this application  
