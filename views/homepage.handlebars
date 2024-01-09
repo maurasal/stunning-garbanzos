@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{name}}</h2>
+  </div>
+  <div class="row mt-4">
+    {{#if jobs.length}}
+    <h3>My Current List of Jobs</h3>
+    <ul>
+      {{#each jobs as |job|}}
+      <li>
+        <h3>{{job.jobTitle}}</h3>
+        <p>Salary:{{salary}}</p>
+        <p>Status:{{job.applicationStatus}}</p>
+      </li>
+    </ul>
+    {{/each}}
+  <p>You don't have any job applications yet.</p>
+  {{/if}}
+</div>

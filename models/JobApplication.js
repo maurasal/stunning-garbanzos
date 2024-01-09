@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class JobApplication extends Model {}
 
@@ -22,15 +22,22 @@ JobApplication.init(
     },
     // Application details
     applicationStatus: {
-      type: DataTypes.ENUM('Planning', 'In Process', 'Applied'),
+      type: DataTypes.ENUM("Planning", "In Process", "Applied"),
       allowNull: false,
-      defaultValue: 'Planning',
+      defaultValue: "Planning",
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "id",
+      },
     },
 
     // Interview details
     //interviewStatus: {
     //  type: DataTypes.ENUM('Scheduled', 'Completed', 'Pending'),
-     // allowNull: true,
+    // allowNull: true,
     //},
     // ... other fields
   },
@@ -39,13 +46,8 @@ JobApplication.init(
     timestamps: true, // Set to true if you want createdAt and updatedAt fields
     freezeTableName: true,
     underscored: true,
-    modelName: 'jobApplication',
+    modelName: "jobApplication",
   }
 );
 
 module.exports = JobApplication;
-
-
-
-
-
