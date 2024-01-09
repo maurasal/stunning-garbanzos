@@ -1,10 +1,10 @@
 //Dependencies
-const express = require("express");
-const exphbs = require("express-handlebars");
-const session = require("express-session");
 const path = require("path");
-const hbs = exphbs.create({});
+const express = require("express");
 const routes = require("./Controllers");
+const exphbs = require("express-handlebars");
+const hbs = exphbs.create({});
+const session = require("express-session");
 const sequelize = require("./config/connection");
 
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -33,6 +33,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.listen(PORT, () => {
-  console.log("Server is listening on: http://localhost:" + PORT);
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => {
+    console.log("Server is listening on: http://localhost:" + PORT);
+  });
 });
