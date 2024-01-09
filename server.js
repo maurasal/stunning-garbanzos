@@ -1,5 +1,4 @@
 //Dependencies
-
 const path = require("path");
 const express = require("express");
 const routes = require("./Controllers");
@@ -30,7 +29,6 @@ app.use(session(sess));
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
-
 app.use(routes);
 
 app.use(express.json());
@@ -38,7 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "public")));
 
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => {
     console.log("Server is listening on: http://localhost:" + PORT);
   });
