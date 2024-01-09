@@ -17,6 +17,7 @@ To use this application, you need to login (create an account if needed) to use 
 ## Feature APIs and NPMs
 <a href="https://www.npmjs.com/package/dotenv">dotenv</a>  
 <a href="https://www.npmjs.com/package/express">express</a>  
+<a href="https://www.npmjs.com/package/express-session">express-session</a>
 <a href="https://www.npmjs.com/package/express-handlebars">express-handlebars</a>  
 <a href="https://www.npmjs.com/package/handlebars">handlebars</a>  
 <a href="https://www.npmjs.com/package/mysql2">mysql2</a>  
