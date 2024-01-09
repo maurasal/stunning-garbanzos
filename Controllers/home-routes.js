@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
     });
 });
 
-//Get user's name and id
+// Get user's name and id
 // router.get("/user/:id", async (req, res) => {
 //   try {
 //     // Find the logged in user on the their id
