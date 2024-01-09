@@ -3,8 +3,8 @@
 ## Table Of Contents
 - [Description](#description)
 - [Usage](#usage)
-- [Contributers](#contributers)
 - [Features](#feature-apis-and-npms)
+- [Contributers](#contributers)
 - [License](#license)
 - [Install](#install)
 
