@@ -24,10 +24,12 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(require('./controllers/'))
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 
 app.listen(PORT, () => {
-    console.log(`App is listening on port ${PORT}`)
-});
+    console.log('Server listening on: http://localhost:' + PORT);
+  });
+  
