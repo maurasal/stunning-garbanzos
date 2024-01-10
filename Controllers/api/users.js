@@ -71,6 +71,16 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(200).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
 // DELETE a user by ID
 router.delete("/:id", async (req, res) => {
   try {
