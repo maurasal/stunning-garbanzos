@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { User, Job } = require("../models");
-const withAuth = require('../utils/auth')
+const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   Job.findAll({
@@ -59,6 +59,14 @@ router.get("/login", (req, res) => {
     return;
   }
   res.render("login");
+});
+
+router.get("/signup", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  res.render("signup");
 });
 
 module.exports = router;

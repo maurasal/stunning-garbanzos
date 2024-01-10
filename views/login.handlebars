@@ -1,14 +1,40 @@
-<div class="login-container">
-  <h2>Login</h2>
-  <form action="/login" method="post" class="login-form">
-    <label for="username">Username:</label>
-    <input type="text" id="name" name="username" required />
+<div class="login-body">
+  <div id="login_container">
+    <h2>Login</h2>
+    <form action="/login" method="post" class="login-form">
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        autocomplete="username"
+        class="form-input"
+        required
+      />
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required />
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        class="form-input"
+        required
+      />
 
-    <button type="submit">Login</button>
-  </form>
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+    <label for="colorPicky">Choose your Background color:</label>
+    <input
+      type="color"
+      id="colorPicky"
+      onchange="changeBackground(this.value)"
+      value="#ffffff"
+    />
+  </div>
 </div>
 
 <script src="/js/login.js"></script>
+<script>
+  function changeBackground(color){
+  document.querySelector('#login_container').style.background = color; }
+</script>
