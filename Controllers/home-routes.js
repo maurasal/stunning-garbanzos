@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User, Job } = require("../models");
+const withAuth = require('../utils/auth')
 
 router.get("/", async (req, res) => {
   Job.findAll({
@@ -27,7 +28,7 @@ router.get("/", async (req, res) => {
 });
 
 // Get user's name and id
-router.get("/user/:id", async (req, res) => {
+router.get("/users/:id", withAuth, async (req, res) => {
   try {
     // Find the logged in user on the their id
     const userLoggedIn = req.session.user_id;
@@ -51,6 +52,7 @@ router.get("/user/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
@@ -58,4 +60,5 @@ router.get("/login", (req, res) => {
   }
   res.render("login");
 });
+
 module.exports = router;
