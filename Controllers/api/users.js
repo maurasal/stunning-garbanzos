@@ -1,7 +1,7 @@
-const express = require("express");
+const express = require("express"); // not sure we need this here either
 const { User } = require("../../models");
 
-const router = express.Router();
+const router = require('express').Router();
 
 // GET all users
 router.get("/", async (req, res) => {
@@ -31,9 +31,43 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const newUser = await User.create(req.body);
-    res.status(201).json(newUser);
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+
+      res.status(201).json(newUser);
+    });
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+
+router.post("/login", async (req, res) => {
+  try {
+    const userData = await User.findOne({ where: { email: req.body.email } });
+    if (!userData) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password' });
+      return;
+    }
+
+    const checkPassword = await userData.checkPassword(req.body.password);
+    if (!checkPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+    });
+
+  } catch (err) {
+    res.status(400).json(err)
   }
 });
 
