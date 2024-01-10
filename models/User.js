@@ -1,7 +1,12 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+const bcrypt = require('bcrypt');
 
-class User extends Model {}
+class User extends Model {
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
+};
 
 User.init(
   {
@@ -30,26 +35,39 @@ User.init(
         len: [8],
       },
     },
-    // Add other fields for users
     skills: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     education: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     experience: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     profilePicture: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
   },
   {
+    hooks: {
+      beforeCreate: async (newUserData) => {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
+      },
+      beforeUpdate: async (updatedUserData) => {
+        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        return updatedUserData;
+      },
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "user",
+    modelName: "User",
   }
 );
 
