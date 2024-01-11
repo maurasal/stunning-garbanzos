@@ -70,6 +70,7 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
+
 router.get("/profile", withAuth, async (req, res) => {
     try {
     
