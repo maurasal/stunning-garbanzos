@@ -3,28 +3,28 @@ const { User, Job } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
-  Job.findAll({
-    attributes: { exclude: ["jobDescription"] },
-    include: [
-      {
-        model: User,
-        attributes: ["id", "user_name", "email", "profilePicture"],
-      },
-    ],
-  })
-    .then((dbJobData) => {
-      // Serialize data so that it is suitable to be rendered in templates
-      const jobs = dbJobData.map((job) => job.get({ plain: true }));
-      // Pass serialized data and render the page using template engine
-      res.render("homepage", {
-        jobs,
-        logged_in: req.session.logged_in,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+  try {
+    const dbJobData = await Job.findAll({
+      attributes: { exclude: ["jobDescription"] },
+      include: [
+        {
+          model: User,
+          attributes: ["id", "user_name", "email", "profilePicture"],
+          include: [JobApplication], // Include job applications here
+        },
+      ],
     });
+
+    const jobs = dbJobData.map((job) => job.get({ plain: true }));
+
+    res.render("homepage", {
+      jobs,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 // Get user's name and id
