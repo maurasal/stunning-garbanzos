@@ -1,9 +1,25 @@
-{{#if loggedIn}}
-  <main class="container container-fluid mt-5">
-    <div id="jobApplicationsContainer">
-      <div>helo</div>
+{{#each jobs as |job|}}
+  <div class="row user-container">
+    <div class="col-auto">
+      <h2>Welcome, {{job.User.user_name}}</h2>
     </div>
-    <button id="addJobApplicationBtn">Add Job Application</button>
-  </main>
-{{/if}}
-{{{body}}}
+    <img src="{{job.User.profilePicture}}" alt="{{job.User.user_name}}">
+    <div class="row mt-4">
+      {{#if job.User.Jobs.length}}
+        <h3>My Current List of Jobs</h3>
+        <ul>
+          {{#each job.User.Jobs as |job|}}
+            <li>
+              <h3>{{job.job_title}}</h3>
+              <p>Company Name: {{job.companyName}}</p>
+              <p>Salary: {{job.salary}}</p>
+              <p>Status: {{job.applicationStatus}}</p>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <p>You don't have any job applications yet.</p>
+      {{/if}}
+    </div>
+  </div>
+{{/each}}

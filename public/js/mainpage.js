@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   
     // Event listener for the "Add Job Application" button
     addJobApplicationBtn.addEventListener("click", () => {
-      // form for adding a new job application
+      // assuming we have a form for adding a new job application
       const newJobApplication = {
         jobTitle: "New Job", // Get the values from form
         companyName: "New Company",
