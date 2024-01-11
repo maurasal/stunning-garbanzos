@@ -3,19 +3,19 @@ const loginForm = document.querySelector(".login-form");
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const username = document.getElementById("name").value;
-  const password = document.getElementById("password").value;
+  const email = document.getElementById("email-login").value;
+  const password = document.getElementById("password-login").value;
 
   try {
-    const response = await fetch("/api/login", {
+    const response = await fetch("/api/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ email, password }),
     });
 
-    if (username && password) {
+    if (email && password) {
       const data = await response.json();
       const token = data.token;
 

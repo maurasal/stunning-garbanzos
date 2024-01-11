@@ -30,6 +30,7 @@ router.get("/:id", async (req, res) => {
 // POST a new user
 router.post("/", async (req, res) => {
   try {
+    console.log(req.body)
     const newUser = await User.create(req.body);
 
     req.session.save(() => {

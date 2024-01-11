@@ -32,11 +32,11 @@ app.set("view engine", "handlebars");
 app.use(routes);
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "public")));
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log("Server is listening on: http://localhost:" + PORT);
   });

@@ -12,19 +12,19 @@ JobApplication.init(
       autoIncrement: true,
     },
     // Job details
-    jobTitle: {
+    job_title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    jobDescription: {
+    salary: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     // Application details
-    applicationStatus: {
-      type: DataTypes.ENUM("Planning", "In Process", "Applied"),
+    application_status: {
+      type: DataTypes.ENUM("Accepted", "In Process", "Applied", "Rejected"),
       allowNull: false,
-      defaultValue: "Planning",
+      defaultValue: "Applied",
     },
     user_id: {
       type: DataTypes.INTEGER,
