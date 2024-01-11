@@ -26,9 +26,9 @@ JobApplication.init(
     },
     // Application details
     application_status: {
-      type: DataTypes.ENUM("Accepted", "In Process", "Applied", "Rejected"),
+      type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: "Applied",
+      // defaultValue: "Applied",
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -37,13 +37,6 @@ JobApplication.init(
         key: "id",
       },
     },
-
-    // Interview details
-    //interviewStatus: {
-    //  type: DataTypes.ENUM('Scheduled', 'Completed', 'Pending'),
-    // allowNull: true,
-    //},
-    // ... other fields
   },
   {
     sequelize,
