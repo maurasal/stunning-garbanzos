@@ -40,6 +40,7 @@ router.post("/", async (req, res) => {
     res.status(400).json(err);
   }
 });
+
 router.post("/login", async (req, res) => {
   console.log("attempting log", req.body)
   try {
