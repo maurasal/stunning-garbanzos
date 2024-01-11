@@ -1,5 +1,3 @@
-
-{{!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -42,37 +40,4 @@
       <script src="/js/logout.js"></script>
     {{/if}}
   </body>
-</html> --}}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Job Application Tracker</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <a href="/">Job Application Tracker</a>
-      </h1>
-      <h2> An organization tool to help keep track of you job applications!</h2>
-      <nav>
-        {{#if loggedIn}}
-          <a href="/dashboard">Dashboard</a>
-          <button id="logout" class="logout">Logout</button>
-        {{else}}
-          <a href="/login">Login</a>
-        {{/if}}
-      </nav>
-    </header>
-    <main class="container container-fluid mt-5">
-      {{{body}}}
-    </main>
-  </div>
-  {{#if loggedIn}}
-    <script src="/js/logout.js"></script>
-  {{/if}}
-</body>
 </html>
