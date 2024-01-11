@@ -13,7 +13,8 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  background: linear-gradient(to right, #b6dee0, #8cd3e9);
+  min-height: 75vh;
 }
 .login_container {
   background: #ffffff;

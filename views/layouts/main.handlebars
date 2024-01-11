@@ -10,7 +10,7 @@
     <title>Job Tracker</title>
     <link rel="stylesheet" href="/css/style.css" />
   </head>
-  <body>
+  <body style="background-image: url('/public/images/main\%20page\%20bg\%20img.jpeg'); background-size: cover">
     <div class="flex-column justify-space-around">
       <header class="display-flex justify-space-between align-center p-2">
         <h1>
@@ -21,7 +21,7 @@
             <a href="/dashboard">Dashboard</a>
             <button id="logout" class="logout">Logout</button>
           {{else}}
-            <a href="/login">login</a>
+            <a href="/login">Login</a>
             |
             <a href="/signup">SignUp</a>
           {{/if}}
@@ -29,8 +29,13 @@
       </header>
       <div class="site-row">
         <div class="site_name">
-          <h1>Job Tracker</h1>
+          <h1>Talent Tracker</h1>
         </div>
+
+         <div class="subtitle" style="text-align: center";>
+          <h2 style="font-size: 28px;"> We're here to help you find your dream job!</h2>
+        </div>
+
       </div>
       <main class="container container-fluid mt-5">
         {{{body}}}
