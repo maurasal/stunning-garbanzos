@@ -70,8 +70,7 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-router.get("/profile", async (req, res) => {
-  if (req.session.logged_in) {
+router.get("/profile", withAuth, async (req, res) => {
     try {
     
       const profile = await User.findOne({
@@ -87,9 +86,6 @@ router.get("/profile", async (req, res) => {
       console.log(error);
       res.status(500).json({ message: "Internal server error" });
     }
-  } else {
-    res.redirect("/login");
-  }
 });
 
 // router.get("/profile", (req,res) => {

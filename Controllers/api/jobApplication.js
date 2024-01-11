@@ -29,7 +29,7 @@ router.get("/:id", withAuth, async (req, res) => {
 });
 
 // CREATE a new application
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
     const applicationData = await JobApplication.create({
       ...req.body,
