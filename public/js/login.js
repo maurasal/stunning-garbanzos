@@ -14,14 +14,8 @@ loginForm.addEventListener("submit", async (event) => {
       },
       body: JSON.stringify({ email, password }),
     });
-
-    if (email && password) {
-      const data = await response.json();
-      const token = data.token;
-
-      document.cookie = `token=${token}; path=/`;
-    } else {
-      console.error("Login failed");
+    if (response.ok){
+      document.location.replace('/profile')
     }
   } catch (error) {
     console.error("An error occurred", error);

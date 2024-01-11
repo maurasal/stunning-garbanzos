@@ -1,4 +1,4 @@
-const express = require("express"); // not sure we need this here either
+const express = require("express"); 
 const { User } = require("../../models");
 
 const router = require('express').Router();
@@ -45,6 +45,7 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+  console.log("attempting log", req.body)
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
     if (!userData) {
@@ -65,6 +66,9 @@ router.post("/login", async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+      res
+        .status(200)
+        .json({message: 'User log in successful'})
     });
 
   } catch (err) {
