@@ -1,16 +1,19 @@
 [
     {
       "job_title": "Job 1",
+      "company_name": "Company 1",
       "salary": "60,000",
       "application_status": "In Process"
     },
     {
       "job_title": "Job 2",
+      "company_name": "Company 2",
       "salary": "80,000",
       "application_status": "Applied"
     },
     {
       "job_title": "Job 3",
+      "company_name": "Company 3",
       "salary": "100,000",
       "application_status": "Accepted"
     }

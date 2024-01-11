@@ -11,6 +11,10 @@ JobApplication.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    company_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     // Job details
     job_title: {
       type: DataTypes.STRING,

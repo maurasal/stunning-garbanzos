@@ -6,6 +6,8 @@ const withAuth = require("../../utils/auth");
 router.get("/", withAuth, async (req, res) => {
   try {
     const applicationData = await JobApplication.findAll();
+
+    res.render('jobs', { JobApplication });
     res.status(200).json(applicationData);
   } catch (err) {
     res.status(500).json(err);
