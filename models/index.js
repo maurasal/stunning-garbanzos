@@ -20,4 +20,5 @@ JobApplication.belongsTo(Job, {
 });
 
 
+
 module.exports = { User, Job };
