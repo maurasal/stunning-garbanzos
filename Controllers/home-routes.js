@@ -70,17 +70,39 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-router.get("/profile", (req,res) => {
-  if (req.session.logged_in) {
-    res.render("profile", {
-      jobs: [
-        {
-          id:13471337,
-          job_title: 'Engineer',
-          application_status: 'Applied'
-        }
-      ]
+router.get("/profile", withAuth, async (req, res) => {
+    try {
+    
+      const profile = await User.findOne({
+        where: { id: req.session.id },
+      });
+
+      const jobs = await Job.findAll({
+        where: { user_id: req.session.user_id },
+      });
+
+      res.render("profile", { profile, jobs });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+});
+
+router.get("/profile", withAuth, async (req,res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Job }],
     });
+
+    const user = userData.get({ plain: true });
+
+    res.render('profile', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
   }
 })
 

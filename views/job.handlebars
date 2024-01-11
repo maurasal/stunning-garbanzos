@@ -1,12 +1,14 @@
+{{#each jobApplications}}
 <div class="job-card">
   <div class="job-card-header">
 
     <h2>
       {{jobTitle}}
-        <p>Company Name:{{companyName}}</p>
-        <p>Salary:{{salary}}</p>
-        <p>Status:{{job.applicationStatus}}</p>
+      <p>Company Name:{{company_name}}</p>
+      <p>Salary:{{salary}}</p>
+      <p>Status:{{application_status}}</p>
     </h2>
-    
+
   </div>
 </div>
+{{/each}}

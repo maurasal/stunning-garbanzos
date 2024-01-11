@@ -11,6 +11,10 @@ JobApplication.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    company_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     // Job details
     job_title: {
       type: DataTypes.STRING,
@@ -22,9 +26,9 @@ JobApplication.init(
     },
     // Application details
     application_status: {
-      type: DataTypes.ENUM("Accepted", "In Process", "Applied", "Rejected"),
+      type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: "Applied",
+      // defaultValue: "Applied",
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -33,17 +37,10 @@ JobApplication.init(
         key: "id",
       },
     },
-
-    // Interview details
-    //interviewStatus: {
-    //  type: DataTypes.ENUM('Scheduled', 'Completed', 'Pending'),
-    // allowNull: true,
-    //},
-    // ... other fields
   },
   {
     sequelize,
-    timestamps: true, // Set to true if you want createdAt and updatedAt fields
+    timestamps: false, // Set to true if you want createdAt and updatedAt fields
     freezeTableName: true,
     underscored: true,
     modelName: "jobApplication",

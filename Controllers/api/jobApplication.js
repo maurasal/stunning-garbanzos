@@ -1,11 +1,13 @@
 const router = require("express").Router();
-const { JobApplication } = require("../../models");
+const { Job } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // GET all applications
 router.get("/", withAuth, async (req, res) => {
   try {
-    const applicationData = await JobApplication.findAll();
+    const applicationData = await Job.findAll();
+
+    res.render('jobs', { Job });
     res.status(200).json(applicationData);
   } catch (err) {
     res.status(500).json(err);
@@ -15,7 +17,7 @@ router.get("/", withAuth, async (req, res) => {
 // GET a single application by ID
 router.get("/:id", withAuth, async (req, res) => {
   try {
-    const applicationData = await JobApplication.findByPk(req.params.id);
+    const applicationData = await Job.findByPk(req.params.id);
     if (!applicationData) {
       res.status(404).json({ message: "Application not found with this id!" });
       return;
@@ -27,9 +29,9 @@ router.get("/:id", withAuth, async (req, res) => {
 });
 
 // CREATE a new application
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
-    const applicationData = await JobApplication.create({
+    const applicationData = await Job.create({
       ...req.body,
       user_id: req.session.user_id,
     });
@@ -42,7 +44,7 @@ router.post("/", async (req, res) => {
 // DELETE an application by ID
 router.delete("/:id", async (req, res) => {
   try {
-    const applicationData = await JobApplication.destroy({
+    const applicationData = await Job.destroy({
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
