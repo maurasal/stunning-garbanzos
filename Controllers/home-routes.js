@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
       // Pass serialized data and render the page using template engine
       res.render("homepage", {
         jobs,
-        loggedIn: req.session.loggedIn,
+        logged_in: req.session.logged_in,
       });
     })
     .catch((err) => {
