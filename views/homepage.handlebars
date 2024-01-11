@@ -1,21 +1,9 @@
 {{#each jobs as |job|}}
   <div class="row user-container">
     <div class="col-auto">
-      <h2>Welcome, {{job.name}}</h2>
     </div>
-    <img src="{{job.profilePicture}}">
     <div class="row mt-4">
-      {{#if jobs.length}}
-        <h3>My Current List of Jobs</h3>
-        <ul>
-          <li>
-            <h3>{{job.jobTitle}}</h3>
-            <p>Company Name: {{job.companyName}}</p>
-            <p>Salary: {{job.salary}}</p>
-            <p>Status: {{job.applicationStatus}}</p>
-          </li>
-        </ul>
-      {{else}}
+      {{#if jobs.length}}{{else}}
         <p>You don't have any job applications yet.</p>
       {{/if}}
     </div>
