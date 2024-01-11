@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { User, Job } = require("../models");
-const withAuth = require('../utils/auth')
+const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   Job.findAll({
@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["id", "name", "email", "profilePicture"],
+        attributes: ["id", "user_name", "email", "profilePicture"],
       },
     ],
   })
@@ -55,10 +55,21 @@ router.get("/users/:id", withAuth, async (req, res) => {
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
+  res.redirect("/");
+  return;
+  try {
+    res.render("login");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/signup", (req, res) => {
+  if (req.session.logged_in) {
     res.redirect("/");
     return;
   }
-  res.render("login");
+  res.render("signup");
 });
 
 router.get("/profile", (req,res) => {

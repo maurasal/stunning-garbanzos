@@ -1,11 +1,9 @@
-const router = express.Router();
-const express = require('express'); // we may not need this here in the file since it is not called in any of the routes
-const { JobApplication } = require('../../models');
-const withAuth = require('../../utils/auth')
-
+const router = require("express").Router();
+const { JobApplication } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 // GET all applications
-router.get('/', withAuth, async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
     const applicationData = await JobApplication.findAll();
     res.status(200).json(applicationData);
@@ -15,11 +13,11 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 // GET a single application by ID
-router.get('/:id', withAuth, async (req, res) => {
+router.get("/:id", withAuth, async (req, res) => {
   try {
     const applicationData = await JobApplication.findByPk(req.params.id);
     if (!applicationData) {
-      res.status(404).json({ message: 'Application not found with this id!' });
+      res.status(404).json({ message: "Application not found with this id!" });
       return;
     }
     res.status(200).json(applicationData);
@@ -29,7 +27,7 @@ router.get('/:id', withAuth, async (req, res) => {
 });
 
 // CREATE a new application
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const applicationData = await JobApplication.create({
       ...req.body,
@@ -42,7 +40,7 @@ router.post('/', async (req, res) => {
 });
 
 // DELETE an application by ID
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const applicationData = await JobApplication.destroy({
       where: {
@@ -51,7 +49,7 @@ router.delete('/:id', async (req, res) => {
       },
     });
     if (!applicationData) {
-      res.status(404).json({ message: 'Application not found with this id!' });
+      res.status(404).json({ message: "Application not found with this id!" });
       return;
     }
     res.status(200).json(applicationData);
