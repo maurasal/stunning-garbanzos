@@ -104,6 +104,34 @@ router.get("/profile", withAuth, async (req,res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-})
+});
+
+router.get("/profile", (req,res) => {
+  if (req.session.logged_in) {
+    res.render("profile", {
+      jobs: [
+        {
+          id:13471338,
+          job_title: 'Project Manager',
+          application_status: 'In Process'
+        }
+      ]
+    });
+  }
+});
+
+router.get("/profile", (req,res) => {
+  if (req.session.logged_in) {
+    res.render("profile", {
+      jobs: [
+        {
+          id:13471339,
+          job_title: 'Data Scientist',
+          application_status: 'Rejected'
+        }
+      ]
+    });
+  }
+});
 
 module.exports = router;
