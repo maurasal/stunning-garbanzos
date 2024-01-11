@@ -1,5 +1,6 @@
 {{#each jobs as |job|}}
 <div class="row user-container">
+
   <div class="col-auto">
     <h2>Welcome, {{name}}</h2>
   </div>
@@ -10,11 +11,30 @@
     <ul>
       <li>
         <h3>{{job.jobTitle}}</h3>
+        <p>Company Name:{{companyName}}</p>
         <p>Salary:{{salary}}</p>
         <p>Status:{{job.applicationStatus}}</p>
       </li>
     </ul>
   <p>You don't have any job applications yet.</p>
   {{/if}}
+
+</div> --}}
+
+<!-- Loop over each object in the projects array -->
+{{!-- {{#each jobs as |job| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      <a href="/job/{{id}}">{{job_title}}</a>
+    </h2>
+    {{!-- <p>Created by {{project.user.name}} on {{format_date project.date_created}}</p> --}}
+  {{!-- </div>
+  <div class="col-md-7">
+    <p>
+      {{application_status}}
+    </p>
+  </div>
 </div>
-  {{/each}}
+{{!-- {{/each}} --}}

@@ -3,8 +3,8 @@ const loginForm = document.querySelector(".login-form");
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+  const email = document.getElementById("email-login").value;
+  const password = document.getElementById("password-login").value;
 
   try {
     const response = await fetch("/api/users/login", {
@@ -13,16 +13,10 @@ loginForm.addEventListener("submit", async (event) => {
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({ email, password }),
     });
-
-    if (username && password) {
-      const data = await response.json();
-      const token = data.token;
-
-      document.cookie = `token=${token}; path=/`;
-      console.log("Login Sucessful");
-    } else {
-      console.error("Login failed");
+    if (response.ok){
+      document.location.replace('/profile')
     }
   } catch (error) {
     console.error("An error occurred", error);

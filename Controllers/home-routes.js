@@ -45,7 +45,7 @@ router.get("/users/:id", withAuth, async (req, res) => {
       return res.redirect("homepage");
     res.render("all", {
       ...user,
-      loggedIn: userLoggedIn,
+      logged_in: userLoggedIn,
     });
   } catch (err) {
     console.log(err);
@@ -54,9 +54,9 @@ router.get("/users/:id", withAuth, async (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  // if (req.session.loggedIn) {
-  // res.redirect("/");
-  // return;
+  if (req.session.logged_in) {
+  res.redirect("/");
+  return;
   try {
     res.render("login");
   } catch (err) {
@@ -65,11 +65,25 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     res.redirect("/");
     return;
   }
   res.render("signup");
 });
+
+router.get("/profile", (req,res) => {
+  if (req.session.logged_in) {
+    res.render("profile", {
+      jobs: [
+        {
+          id:13471337,
+          job_title: 'Engineer',
+          application_status: 'Applied'
+        }
+      ]
+    });
+  }
+})
 
 module.exports = router;
