@@ -1,14 +1,12 @@
 {{#each jobApplications}}
 <div class="job-card">
   <div class="job-card-header">
-
-    <h2>
-      {{jobTitle}}
-      <p>Company Name:{{company_name}}</p>
-      <p>Salary:{{salary}}</p>
-      <p>Status:{{application_status}}</p>
-    </h2>
-
+    <h2>{{jobTitle}}</h2>
+    <p>Company Name: {{companyName}}</p>
+    <p>Salary: {{salary}}</p>
+    <p>Status: {{applicationStatus}}</p>
+    <button class="editJobApplicationBtn" data-job-id="{{id}}">Edit</button>
+    <button class="deleteJobApplicationBtn" data-job-id="{{id}}">Delete</button>
   </div>
 </div>
 {{/each}}
