@@ -15,13 +15,11 @@ async function signupForm(event) {
     // Check the response status: is it a success?
     // If yes, navigate to the home page; otherwise, display an error
     if (response.ok) {
-      document.location.replace("/dashboard");
+      document.location.replace("/");
     } else {
       alert("Failed to create account.");
     }
   }
 }
 // Listen for submit events on the form
-document
-  .querySelector(".login_sgnup-btn")
-  .addEventListener("submit", signupForm);
+document.querySelector("#signupForm").addEventListener("submit", signupForm);

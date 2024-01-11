@@ -7,12 +7,12 @@ loginForm.addEventListener("submit", async (event) => {
   const password = document.getElementById("password").value;
 
   try {
-    const response = await fetch("/api/login", {
+    const response = await fetch("/api/users/login", {
       method: "POST",
+      body: JSON.stringify({ username, password }),
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
     });
 
     if (username && password) {
@@ -20,6 +20,7 @@ loginForm.addEventListener("submit", async (event) => {
       const token = data.token;
 
       document.cookie = `token=${token}; path=/`;
+      console.log("Login Sucessful");
     } else {
       console.error("Login failed");
     }

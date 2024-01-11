@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["id", "name", "email", "profilePicture"],
+        attributes: ["id", "user_name", "email", "profilePicture"],
       },
     ],
   })
@@ -54,11 +54,14 @@ router.get("/users/:id", withAuth, async (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect("/");
-    return;
+  // if (req.session.loggedIn) {
+  // res.redirect("/");
+  // return;
+  try {
+    res.render("login");
+  } catch (err) {
+    res.status(500).json(err);
   }
-  res.render("login");
 });
 
 router.get("/signup", (req, res) => {

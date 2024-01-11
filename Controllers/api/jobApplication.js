@@ -1,5 +1,4 @@
-const router = express.Router();
-const express = require("express"); 
+const router = require("express").Router();
 const { JobApplication } = require("../../models");
 const withAuth = require("../../utils/auth");
 
