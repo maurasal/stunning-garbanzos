@@ -1,5 +1,5 @@
 <div>
-  <h1>Welcome, {{user_name}}</h1>
+  <h1>Welcome, {{userData.user_name}}</h1>
 </div>
 
 <div>
@@ -26,8 +26,8 @@
   </form>
 </div>
 
-{{#if jobApplications.length}}
 <h3>Current Applications:</h3>
+{{#if jobApplications.length}}
 
   {{#each jobApplications as |jobApplication|}}
     <div class="job-card">

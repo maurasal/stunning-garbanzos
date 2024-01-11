@@ -1,5 +1,3 @@
-// const addInfoButton = document.getElementById("addJob");
-
 const addJobHandler =  async (event) => {
   event.preventDefault();
 
