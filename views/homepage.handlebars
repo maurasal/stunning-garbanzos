@@ -1,3 +1,10 @@
+
+{{#if loggedIn}}
+  <button id="logout" class="logout" onclick="window.location='/logout'">Logout</button>
+  {{!-- Add a log to check the value of loggedIn --}}
+  <p>{{loggedIn}}</p>
+{{/if}}
+
 {{#each jobs as |job|}}
   <div class="row user-container">
     <div class="col-auto">
