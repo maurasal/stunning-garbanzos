@@ -1,21 +1,31 @@
 <div class="row">
-  <div class="col-md-6">
-    <h2>Login</h2>
+  <div class="col-md-6 login-body">
+    <div class="login_container">
+      <h2>Login</h2>
 
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">Login</button>
-      </div>
-    </form>
+      <form class="form login-form">
+        <div class="form-group">
+          <label for="email-login">email:</label>
+          <input class="form-input" type="text" id="email-login" />
+        </div>
+        <div class="form-group">
+          <label for="password-login">password:</label>
+          <input class="form-input" type="password" id="password-login" />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Login</button>
+        </div>
+      </form>
+      <label for="colorPicky">Choose your Background color:</label>
+      <input
+        type="color"
+        id="colorPicky"
+        onchange="changeBackground(this.value)"
+        value="#ffffff"
+      />
+    </div>
   </div>
+
   <div class="col-md-6">
     <h2>Create Account</h2>
 
@@ -40,3 +50,7 @@
 </div>
 
 <script src="./js/login.js"></script>
+<script>
+  function changeBackground(color){
+  document.querySelector('.login_container').style.background = color; }
+</script>
