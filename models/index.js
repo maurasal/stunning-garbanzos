@@ -10,12 +10,12 @@ Job.belongsTo(User, {
   foreignKey: "user_id",
 });
 
-Job.hasMany(JobApplication, {
+Job.hasMany(Job, {
   foreignKey: "job_id",
   onDelete: "CASCADE",
 });
 
-JobApplication.belongsTo(Job, {
+Job.belongsTo(Job, {
   foreignKey: "job_id",
 });
 
