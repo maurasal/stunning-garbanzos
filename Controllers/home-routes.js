@@ -55,14 +55,14 @@ router.get("/users/:id", withAuth, async (req, res) => {
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-  res.redirect("/");
-  return;
-  try {
-    res.render("login");
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+    res.redirect("/");
+    return;
+    try {
+      res.render("login");
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
 
 router.get("/signup", (req, res) => {
   if (req.session.logged_in) {
