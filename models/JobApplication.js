@@ -47,7 +47,7 @@ JobApplication.init(
   },
   {
     sequelize,
-    timestamps: true, // Set to true if you want createdAt and updatedAt fields
+    timestamps: false, // Set to true if you want createdAt and updatedAt fields
     freezeTableName: true,
     underscored: true,
     modelName: "jobApplication",
