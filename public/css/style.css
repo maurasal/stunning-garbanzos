@@ -59,4 +59,26 @@
   margin-top: 10px;
 }
 
-/* styles for the main page */
+/* styles for the Sign up page */
+.signup-pg {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  transition: background 0.5s ease-in-out;
+}
+.signup-container {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 400px;
+}
+.container h1 {
+  color: #333333;
+  font-family: "Tektur", sans-serif;
+  font-size: 65px;
+}
