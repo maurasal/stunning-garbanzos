@@ -125,6 +125,20 @@ router.get("/profile", (req,res) => {
     res.render("profile", {
       jobs: [
         {
+          id:13471338,
+          job_title: 'Project Manager',
+          application_status: 'In Process'
+        }
+      ]
+    });
+  }
+});
+
+router.get("/profile", (req,res) => {
+  if (req.session.logged_in) {
+    res.render("profile", {
+      jobs: [
+        {
           id:13471339,
           job_title: 'Data Scientist',
           application_status: 'Rejected'
@@ -133,5 +147,6 @@ router.get("/profile", (req,res) => {
     });
   }
 });
+
 
 module.exports = router;
