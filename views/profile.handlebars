@@ -1,24 +1,26 @@
 <div>
-  <h1>Welcome, {{user_name}}</h1>
+
+  <h1>Welcome, {{userData.user_name}}</h1>
 </div>
 
 <div>
-  <form>
+  <form class="new-job-application">
     <div class="jobTitle">
       <label for="jobTitle">Job Title:</label>
-      <input type="text" id="jobTitle">
+      <input type="text" id="jobTitle" name="jobTitle" />
     </div>
     <div class="companyName">
       <label for="companyName">Company Name:</label>
-      <input type="text" id="companyName">
+      <input type="text" id="companyName" name="companyName" />
     </div>
     <div class="salary">
       <label for="salary">Salary:</label>
-      <input type="text" id="salary">
+      <input type="text" type="number" id="salary" name="salary"/>
     </div>
     <div class="applicationStatus">
       <label for="applicationStatus">Application Status:</label>
-      <input type="text" id="applicationStatus">
+      <input type="text" id="applicationStatus" name="applicationStatus" />
+
     </div>
     <div>
       <button id="addJob">Add Job Application</button>
@@ -26,19 +28,21 @@
   </form>
 </div>
 
-{{#each jobs as |job| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      <a href="/job/{{job.id}}">{{job.job_title}}</a>
-    </h2>
-    {{!-- <p>Created by {{project.user.name}} on {{format_date project.date_created}}</p> --}}
-  </div>
-  <div class="col-md-7">
-    <p>
-      {{job.application_status}}
-    </p>
-  </div>
-</div>
-{{/each}}
+<h3>Current Applications:</h3>
+{{#if jobApplications.length}}
+
+  {{#each jobApplications as |jobApplication|}}
+    <div class="job-card">
+      <div class="job-card-header">
+        <h2>
+          {{jobApplication.job_title}}
+          <p>Company Name: {{jobApplication.company_name}}</p>
+          <p>Salary: {{jobApplication.salary}}</p>
+          <p>Status: {{jobApplication.application_status}}</p>
+        </h2>
+      </div>
+    </div>
+  {{/each}}
+{{/if}}
+
+<script src="./js/profile.js"></script>
