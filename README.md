@@ -15,6 +15,7 @@ This application is a job application tracker. It will keep track of which jobs 
 To use this application, you need to login (create an account if needed) to use this app. You will have to manually add each job you have applied for by filling out a form with the respective information. Then on each card will be a drop down menu to update the status of each job application.
 
 ## Feature APIs and NPMs
+<a href="https://www.npmjs.com/package/bcrypt">bcrypt</a>
 <a href="https://www.npmjs.com/package/dotenv">dotenv</a>  
 <a href="https://www.npmjs.com/package/express">express</a>  
 <a href="https://www.npmjs.com/package/express-session">express-session</a>  
@@ -35,7 +36,7 @@ To use this application, you need to login (create an account if needed) to use 
 MIT Lisence
 
 ## Install
-Clone the repository by running `git clone https://github.com/josephspur
+Clone the repository by running `git clone https://github.com/maurasal
 /stunning-garbanzos.git` in your terminal.  
 
 Then `npm install` to install all the npm packages that are needed for this application  
