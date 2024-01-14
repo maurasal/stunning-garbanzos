@@ -6,7 +6,6 @@ async function signupForm(event) {
 
   if (userName && password) {
     try {
-      // Send a POST request to the API endpoint with the user's username and password
       const response = await fetch("/api/users", {
         method: "POST",
         body: JSON.stringify({ user_name: userName, password }),
@@ -14,8 +13,7 @@ async function signupForm(event) {
           "Content-Type": "application/json",
         },
       });
-    // Check the response status: is it a success?
-    // If yes, navigate to the home page; otherwise, display an error
+
       if (response.ok) {
         document.location.replace("/");
       } else {
@@ -27,5 +25,10 @@ async function signupForm(event) {
   }
 }
 
-// Listen for submit events on the form
-document.querySelector("#signupForm").addEventListener("submit", signupForm);
+function attachSignupEventListener() {
+  // Listen for submit events on the form
+  document.querySelector("#signupForm").addEventListener("submit", signupForm);
+}
+
+// Attach the event listener when the page loads
+attachSignupEventListener();
