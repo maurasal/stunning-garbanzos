@@ -1,34 +1,34 @@
 async function signupForm(event) {
   event.preventDefault();
 
-  const userName = document.querySelector("#user-name-signup").value.trim();
+  const email = document.querySelector("#email-signup").value.trim(); // Ensure this selector matches your HTML
   const password = document.querySelector("#pwd").value.trim();
 
-  if (userName && password) {
+  if (email && password) {
     try {
       const response = await fetch("/api/users", {
         method: "POST",
-        body: JSON.stringify({ user_name: userName, password }),
-        headers: {
-          "Content-Type": "application/json",
-        },
+        body: JSON.stringify({ user_name: userName, email, password }),
+        headers: { "Content-Type": "application/json" },
       });
 
       if (response.ok) {
-        document.location.replace("/");
+        alert("Signup successful!");
+        document.location.replace("/profile"); // Redirect to profile page or login page as needed
       } else {
-        alert("Failed to create account.");
+        console.log("Failed to sign up. Status code:", response.status);
+      const data = await response.json();
+      alert(data.message || "Failed to sign up.");
       }
     } catch (error) {
-      console.error("An error occurred", error);
+      // In case of a network error or other issues
+      console.error("Error during signup:", error);
+    alert("Error during signup. See console for details.");
+
     }
   }
 }
 
-function attachSignupEventListener() {
-  // Listen for submit events on the form
-  document.querySelector("#signupForm").addEventListener("submit", signupForm);
-}
-
-// Attach the event listener when the page loads
-attachSignupEventListener();
+document
+  .querySelector("#signupForm") // Ensure this selector matches the form ID in your HTML
+  .addEventListener("submit", signupForm);

@@ -2,27 +2,22 @@ const router = require("express").Router();
 const { User, Job } = require("../models");
 const withAuth = require("../utils/auth");
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const dbJobData = await Job.findAll({
-      attributes: { exclude: ["jobDescription"] },
-      include: [
-        {
-          model: User,
-          attributes: ["id", "user_name", "email", "profilePicture"],
-          include: [Job], // Include job applications here
-        },
-      ],
+      include: [{
+        model: User,
+        attributes: ['id', 'email', 'profilePicture'],
+      }],
     });
 
     const jobs = dbJobData.map((job) => job.get({ plain: true }));
 
-    res.render("homepage", {
+    res.render('homepage', {
       jobs,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });

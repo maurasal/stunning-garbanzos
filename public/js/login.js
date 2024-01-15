@@ -6,19 +6,17 @@ loginForm.addEventListener("submit", async (event) => {
   const email = document.getElementById("email-login").value;
   const password = document.getElementById("password-login").value;
 
-  try {
+  if (email && password) {
     const response = await fetch("/api/users/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
+      headers: { "Content-Type": "application/json" },
     });
-    if (response.ok){
-      document.location.replace('/profile')
+
+    if (response.ok) {
+      document.location.replace('/profile');
+    } else {
+      alert("Failed to log in.");
     }
-  } catch (error) {
-    console.error("An error occurred", error);
   }
 });

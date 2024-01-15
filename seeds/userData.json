@@ -1,17 +1,14 @@
 [
 
   {
-    "user_name": "Barbie",
     "email": "barbie@gmail.com",
     "password": "password123"
   },
   {
-    "user_name": "Stunning",
     "email": "stunning@yahoo.com",
     "password": "password123"
   },
   {
-    "user_name": "Garbanzo",
     "email": "garbanzo@hotmail.com",
     "password": "password123"
   }
