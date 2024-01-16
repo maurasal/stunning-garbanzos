@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Job } = require("../../models");
+const { JobApplication } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // GET all applications
@@ -29,17 +29,19 @@ router.get("/:id", withAuth, async (req, res) => {
 });
 
 // CREATE a new application
-router.post("/", withAuth, async (req, res) => {
+
+router.post('/jobApplications', withAuth, async (req, res) => {
   try {
-    const applicationData = await Job.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
-    res.status(201).json(applicationData);
+      const newJobApplication = await JobApplication.create({
+          ...req.body,
+          userId: req.session.userId // Assuming you store the user ID in the session
+      });
+      res.status(201).json(newJobApplication);
   } catch (err) {
-    res.status(400).json(err);
+      res.status(500).json(err);
   }
 });
+
 
 // DELETE an application by ID
 router.delete("/:id", async (req, res) => {
