@@ -26,3 +26,6 @@ const addJobHandler =  async (event) => {
 document
   .querySelector('.new-job-application')
   .addEventListener('submit', addJobHandler)
+
+
+  
