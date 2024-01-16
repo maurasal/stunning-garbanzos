@@ -4,23 +4,31 @@ const withAuth = require("../utils/auth");
 
 router.get('/', async (req, res) => {
   try {
+    // Fetch data required for the homepage, if any
+    // Example: Fetching job listings
     const dbJobData = await Job.findAll({
       include: [{
         model: User,
-        attributes: ['id', 'email', 'profilePicture'],
+        attributes: ['email', 'password'],
       }],
     });
 
+    // Convert job data to a plain format if needed
     const jobs = dbJobData.map((job) => job.get({ plain: true }));
 
+    // Render the 'homepage' view, passing job data and login status
     res.render('homepage', {
       jobs,
-      loggedIn: req.session.loggedIn,
+      loggedIn: req.session.loggedIn, // Pass the loggedIn status for conditional rendering in the view
     });
   } catch (err) {
+    // Log the error and send a server error status code
+    console.error(err);
     res.status(500).json(err);
   }
 });
+
+module.exports = router;
 
 // Get user's name and id
 router.get("/users/:id", withAuth, async (req, res) => {
@@ -56,6 +64,12 @@ router.get("/login", (req, res) => {
     }
   }
 );
+
+router.post('/logout', (req, res) => {
+  req.session.destroy(() => {
+    res.redirect('/');
+  });
+});
  
 router.get("/signup", (req, res) => {
   if (req.session.logged_in) {
