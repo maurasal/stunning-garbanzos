@@ -90,7 +90,9 @@ router.get("/profile", withAuth, async (req, res) => {
         where: { user_id: req.session.user_id },
       });
 
-      res.render("profile", { profile, jobs });
+      const jobsArray = jobs.map((job) => job.get({ plain: true }));
+
+      res.render("profile", { profile, jobsArray });
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: "Internal server error" });

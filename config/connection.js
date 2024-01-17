@@ -2,11 +2,13 @@ const Sequelize = require("sequelize");
 require("dotenv").config();
 
 let sequelize;
-
+console.log(process.env.JAWSDB_URL)
 if (process.env.JAWSDB_URL) {
+  console.log('using jawsdb');
   // Use the JawsDB provided URL for Heroku deployment
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
+  console.log("using local")
   // Otherwise use local host with username, password and database name from .env file
   sequelize = new Sequelize(
     process.env.DB_NAME,
