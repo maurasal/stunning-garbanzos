@@ -29,9 +29,9 @@
 </div>
 
 <h3>Current Applications:</h3>
-{{#if jobApplications.length}}
-
-  {{#each jobApplications as |jobApplication|}}
+{{#if jobsArray.length}}
+{{log jobsArray}}
+  {{#each jobsArray as |jobApplication|}}
     <div class="job-card">
       <div class="job-card-header">
         <h2>
